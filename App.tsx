@@ -1,20 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import ModalMenu from './screen/ModalMenu';
+import { useState } from 'react';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+
+const App = () => {
+  const [visible, setVisible] = useState(false)
+  return(
+  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <TouchableOpacity
+      style={{
+        backgroundColor:"orange",
+        width: "80%", 
+        height: 50 ,
+        alignSelf:'center',
+        justifyContent:'center',
+        alignItems:'center',
+        borderRadius:10
+        }}
+    >
+      <Text>Modal</Text>
+    </TouchableOpacity>
+    <ModalMenu visible={visible} setVisible={setVisible} />
+  </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
